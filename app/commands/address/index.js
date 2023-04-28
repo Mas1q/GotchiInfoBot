@@ -17,7 +17,6 @@ const get_address = async (ctx, next) => {
         let text = `<b>Новый пользователь</b>:\n`;
         text += `<b>ID</b>: ${ctx.user.id}\n`;
         text += `<b>ФИО</b>: ${ctx.user.first_name} ${ctx.user.last_name}\n`;
-        text += `<b>Номер</b>: <code>+${ctx.user.phone_number}</code>\n`;
         text += `<b>ТГ</b>: @${ctx.user.username}\n`;
         text += `<b>Кошелёк</b>: <code>${ctx.user.address}</code>\n`;
         await ctx.reply(

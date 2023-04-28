@@ -33,16 +33,7 @@ const generateUsersList = async start => {
 const handler = async ctx => {
     if(ctx.user.admin) {
         let start = 0;
-        let text = 'Список пользователей:\n';
-
-        text += await generateUsersList(start);
-
-        const keyboard = Markup.inlineKeyboard([
-            [
-                Markup.button.callback('Предыдущие', JSON.stringify({ command: 'list', type: 'minus', value: start}), false),
-                Markup.button.callback('Следующие', JSON.stringify({ command: 'list', type: 'plus', value: start}), false)
-            ]
-        ]);
+        let text = 'Список пользователей:\n' + await generateUsersList(start);
 
         await ctx.replyWithHTML(text, {
             reply_markup: {

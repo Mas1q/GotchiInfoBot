@@ -18,13 +18,13 @@ const show_id = async ctx => {
                 if (user.username) textStr += `<b>ТГ</b>: https://t.me/${user.username} `;
                 if (user.address) textStr += `<b>Кошелёк</b>: <code>${user.address ??'Не заполнен'}</code> `;
                 if (user.address) textStr += `<b>MATIC</b>: ${balance}`;
-                await ctx.replyWithHTML(textStr, {
+                return await ctx.replyWithHTML(textStr, {
                     disable_web_page_preview: true
                 });
             }
-
         }
-    } else await ctx.reply(`ID данного чата: ${ctx.message.chat.id}`);
+    }
+    return await ctx.reply(`ID данного чата: ${ctx.message.chat.id}`);
 };
 
 export default show_id;

@@ -14,6 +14,9 @@ import request_matic from "./app/commands/matic/index.js";
 import show_id from "./app/commands/id/index.js";
 import contact from "./app/commands/contact/index.js";
 import reply_message from "./app/commands/reply_message/index.js";
+import search from "./app/commands/search/index.js";
+import help from "./app/commands/help/index.js";
+import gotchi from "./app/commands/gotchi/index.js";
 
 dotenv.config();
 
@@ -24,12 +27,14 @@ try {
 
     bot.command('id', show_id);
     bot.start(start);
-    bot.on('contact', contact);
     bot.hears(/0x[a-fA-F\d]{40}/, get_address);
 
     bot.use(state_check);
 
+    bot.command('search', search);
+    bot.command('help', help);
     bot.command('matic', request_matic);
+    bot.command('gotchi', gotchi);
     bot.command('ban', ban_handler);
     bot.command('delete', delete_handler);
     bot.command('say', say_handler);
@@ -42,4 +47,5 @@ try {
     console.error(e);
 }
 
+console.log("GotchiInfoBot start.")
 
